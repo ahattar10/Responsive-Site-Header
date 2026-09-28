@@ -57,6 +57,9 @@ body {
   padding: 0.75rem;
   text-decoration: none;
 }
+.nav-enhanced .menu-button[aria-expanded="false"] + .nav-list {
+  display: none;
+}
 main,
 footer {
   width: min(100% - 2rem, var(--max));
@@ -69,5 +72,13 @@ main {
 @media (min-width: 36em) {
   .nav-list {
     flex-direction: row;
+  }
+
+  .nav-enhanced .menu-button {
+    display: none;
+  }
+
+  .nav-enhanced .menu-button[aria-expanded="false"] + .nav-list {
+    display: flex;
   }
 }
