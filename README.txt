@@ -1,17 +1,19 @@
-MODULE 5 RESPONSIVE NAVIGATION DELIVERABLE STARTER
+MARSHLIGHT NATURE CENTER
+Responsive Site Header
 
-Required files:
-- index.html, visit.html, support.html: three-page demonstration shell
-- styles.css: shared component styles and TODO markers
-- navigation.js: minimal behavior scaffold and TODO markers
-- navigation-plan.html: planning, testing, code-defense, and AI evidence
-- README.txt: replace this text with your site description and testing notes
+About
+A small nature-center website with trail, visit, events, and visitor-support information.
 
-Use:
-1. Extract the folder before editing.
-2. Keep the required filenames and relative paths.
-3. Replace bracketed placeholders and every TODO.
-4. Test all three pages from the extracted folder.
-5. Zip the complete folder. Re-extract that ZIP and test it before submission.
+Pages
+- index.html: Home and trail information
+- visit.html: Visit planning and events
+- support.html: Visitor help and access information
 
-Do not replace this scaffold with a framework, library, or navigation plug-in.
+How to view
+Open index.html in a web browser. The pages use relative links and require no build tools or external libraries.
+
+Testing
+- Browser: [write the browser you used]
+- Viewport widths tested: 320px, 368px, 374px, 384px, 480px, 512px, 514px, 516px, and 576px
+- Also tested: keyboard navigation, 200% zoom, JavaScript disabled, and CSS disabled
+- Detailed results: navigation-plan.html
