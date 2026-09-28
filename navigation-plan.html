@@ -77,17 +77,18 @@
         <td>Get support</td>
         <td>Help and access information.</td>
       </tr>
-    </table>                  
+    </table>
     <h2>2. Breakpoint evidence</h2>
     <p>
       <strong>Method and widths tested:</strong> Resized the browser viewport
-      and tested 368px, 374px, 384px, 480px, 512px, and 514px.
+      and tested 320px, 368px, 374px, 384px, 480px, 512px, 514px, 516px, and
+      576px.
     </p>
     <p>
       <strong>First content failure:</strong> At 512 CSS pixels, navigation
       labels wrapped; at 514 CSS pixels, all five labels fit on one line. At
-      374px labels also wrapped, and at 368px the final “t” in “Get support”
-      was covered.
+      374px labels also wrapped, and at 368px the final “t” in “Get support” was
+      covered.
     </p>
     <p>
       <strong>Chosen breakpoint in relative units:</strong> 36em (about 576px),
@@ -97,8 +98,8 @@
       <strong>Long-label and zoom retest:</strong> At 516px, the longer label
       wrapped; at 576px, it fit on one line. At 200% zoom with a 576px viewport,
       all five navigation links stayed on one row, page text wrapped, and the
-      footer was reachable without horizontal scrolling. The original label
-      was restored.
+      footer was reachable without horizontal scrolling. The original label was
+      restored.
     </p>
     <h2>3. Interaction and failure test record</h2>
     <table>
@@ -110,54 +111,104 @@
       </tr>
       <tr>
         <td>Keyboard: button, Tab, Escape, focus</td>
-        <td>Enter or Space activates the Menu button; Tab moves through links with visible focus; Escape closes the menu and returns focus to Menu.</td>
-        <td>At 320px, Space opened and closed the menu. Tab focused navigation links, and Escape closed the menu and returned focus to Menu.</td>
+        <td>
+          Tab reveals the skip link; Enter moves to main. Enter or Space
+          activates Menu; Tab reaches links with visible focus; Escape closes
+          the menu and returns focus to Menu.
+        </td>
+        <td>
+          On index.html, visit.html, and support.html, the skip link moved to
+          main. At 320px, Space opened and closed the menu; Tab focused links;
+          Escape closed the menu and returned focus to Menu.
+        </td>
         <td>Pass; no repair needed.</td>
       </tr>
       <tr>
         <td>Pointer/touch targets</td>
-        <td>[Expected]</td>
-        <td>[Observed]</td>
-        <td>[Pass/fail and repair]</td>
+        <td>Menu and links are easy to activate; targets do not overlap.</td>
+        <td>
+          At 320px, pointer and touch activated the Menu button and links; no
+          missed activations or overlap.
+        </td>
+        <td>Pass; no repair needed.</td>
       </tr>
       <tr>
         <td>320px and breakpoint region</td>
-        <td>[Expected]</td>
-        <td>[Observed]</td>
-        <td>[Pass/fail and repair]</td>
+        <td>
+          At 320px and 575px, Menu is visible and links are collapsed until
+          opened; at 576px, Menu is hidden and all five links appear in one row.
+        </td>
+        <td>The layout matched at 320px, 575px, and 576px.</td>
+        <td>Pass; no repair needed.</td>
       </tr>
       <tr>
         <td>200% zoom</td>
-        <td>[Expected]</td>
-        <td>[Observed]</td>
-        <td>[Pass/fail and repair]</td>
+        <td>
+          Navigation remains usable without clipping, overlap, or horizontal
+          scrolling.
+        </td>
+        <td>
+          At 576px and 200% zoom, all five links stayed on one row, page text
+          wrapped, and the footer was reachable without horizontal scrolling.
+        </td>
+        <td>Pass; no repair needed.</td>
       </tr>
       <tr>
         <td>JavaScript unavailable</td>
-        <td>[Expected]</td>
-        <td>[Observed]</td>
-        <td>[Pass/fail and repair]</td>
+        <td>
+          All five navigation links remain visible and usable; the Menu button
+          stays hidden.
+        </td>
+        <td>
+          At 320px, all five links were visible and usable on index.html,
+          visit.html, and support.html with JavaScript disabled; the Menu button
+          stayed hidden.
+        </td>
+        <td>Pass; no repair needed.</td>
       </tr>
       <tr>
         <td>CSS unavailable / wide recovery</td>
-        <td>[Expected]</td>
-        <td>[Observed]</td>
-        <td>[Pass/fail and repair]</td>
+        <td>
+          All five navigation links remain visible and usable without CSS.
+        </td>
+        <td>
+          At 576px with CSS disabled, all five links were visible and usable.
+        </td>
+        <td>Pass; no repair needed.</td>
       </tr>
     </table>
     <p>
-      <strong>Screenshot filenames and what each proves:</strong> [Response]
+      <strong>Screenshot filenames and what each proves:</strong>
+      mobile-menu-open-focus.png - At 320px, the narrow menu is open and the
+      Menu button has visible keyboard focus. wide-navigation.png - At 576px,
+      all five navigation links are visible on one row and the Menu button is
+      hidden.
     </p>
     <h2>4. Peer task test</h2>
-    <p><strong>Tester relationship (no name needed):</strong> [Response]</p>
-    <p><strong>Two tasks attempted:</strong> [Response]</p>
-    <p><strong>What the tester did or said:</strong> [Direct observation]</p>
-    <p><strong>Change made or justified:</strong> [Response]</p>
+    <p><strong>Tester relationship (no name needed):</strong> Wife</p>
+    <p>
+      <strong>Two tasks attempted:</strong> "You're planning a walk. Find
+      information about the trails." "You want to know what programs or events
+      are available. Find that information."
+    </p>
+    <p>
+      <strong>What the tester did or said:</strong> She selected Explore trails
+      for the first task and Events for the second, reaching the intended
+      sections without help.
+    </p>
+    <p>
+      <strong>Change made or justified:</strong> No change. She completed both
+      tasks without assistance, so the labels and order appeared clear.
+    </p>
     <h2>5. JavaScript code defense</h2>
     <p>
-      Explain initialization, state synchronization, activation, and
-      Escape/focus behavior in your own words. Refer to the exact variable,
-      attribute, dataset value, function, and event used.
+      The script selects the Menu button as button and the link list as list. It
+      adds the nav-enhanced class only when both are present, then shows the
+      button and starts aria-expanded at false. The named function setMenuOpen
+      changes aria-expanded; the CSS uses that value to show or hide the links.
+      A click checks the current value and toggles it. When Escape is pressed
+      while the menu is open, the script closes it and returns focus to the
+      button with button.focus().
     </p>
     <p>[Response]</p>
     <h2>6. AI disclosure</h2>
