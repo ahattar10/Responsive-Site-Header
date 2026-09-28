@@ -41,7 +41,21 @@ body {
   font-weight: 700;
 }
 .menu-button {
-  /* TODO: native button appearance, focus, and comfortable target. */
+  appearance: none;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  color: var(--ink);
+  background: var(--accent);
+  border: 0.12rem solid transparent;
+  border-radius: 0.25rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.menu-button:focus-visible {
+  outline: 0.2rem solid var(--paper);
+  outline-offset: 0.15rem;
 }
 .nav-list {
   display: flex;
@@ -57,18 +71,47 @@ body {
   padding: 0.75rem;
   text-decoration: none;
 }
+.nav-list a:hover {
+  color: var(--ink);
+  background: var(--surface);
+  text-decoration: underline;
+}
+
+.nav-list a:focus-visible {
+  color: var(--ink);
+  background: var(--paper);
+  outline: 0.2rem solid var(--accent);
+  outline-offset: 0.15rem;
+  text-decoration: underline;
+}
+
+.nav-list a:active {
+  color: var(--ink);
+  background: var(--accent);
+}
+
+.nav-list a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.2em;
+}
+
 .nav-enhanced .menu-button[aria-expanded="false"] + .nav-list {
   display: none;
 }
+
 main,
 footer {
   width: min(100% - 2rem, var(--max));
   margin-inline: auto;
 }
+
 main {
   min-height: 55vh;
   padding-block: 2rem;
 }
+
 @media (min-width: 36em) {
   .nav-list {
     flex-direction: row;
