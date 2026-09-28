@@ -45,7 +45,7 @@ body {
 }
 .nav-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.25rem;
   list-style: none;
   margin: 0.75rem 0 0;
@@ -66,4 +66,8 @@ main {
   min-height: 55vh;
   padding-block: 2rem;
 }
-/* TODO: add the relative-unit breakpoint justified in navigation-plan.html. */
+@media (min-width: 36em) {
+  .nav-list {
+    flex-direction: row;
+  }
+}

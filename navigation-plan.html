@@ -79,14 +79,26 @@
       </tr>
     </table>
     <h2>2. Breakpoint evidence</h2>
-    <p><strong>Method and widths tested:</strong> [Response]</p>
     <p>
-      <strong>First content failure:</strong> At 368 CSS pixels in the temporary
-      horizontal layout, the final “t” in “Get support” was covered.
+      <strong>Method and widths tested:</strong> Resized the browser viewport
+      and tested 368px, 374px, 384px, 480px, 512px, and 514px.
     </p>
-    <p><strong>Chosen breakpoint in relative units:</strong> [Response]</p>
     <p>
-      <strong>Long-label and zoom retest:</strong> [Observed result and repair]
+      <strong>First content failure:</strong> At 512 CSS pixels, navigation
+      labels wrapped; at 514 CSS pixels, all five labels fit on one line. At
+      374px labels also wrapped, and at 368px the final “t” in “Get support”
+      was covered.
+    </p>
+    <p>
+      <strong>Chosen breakpoint in relative units:</strong> 36em (about 576px),
+      where the longer test label fit without wrapping; it wrapped at 516px.
+    </p>
+    <p>
+      <strong>Long-label and zoom retest:</strong> At 516px, the longer label
+      wrapped; at 576px, it fit on one line. At 200% zoom with a 576px viewport,
+      all five navigation links stayed on one row, page text wrapped, and the
+      footer was reachable without horizontal scrolling. The original label
+      was restored.
     </p>
     <h2>3. Interaction and failure test record</h2>
     <table>
