@@ -1,12 +1,31 @@
 const button = document.querySelector(".menu-button");
 const list = document.querySelector("#primary-nav");
 
-// TODO 1: progressively enhance the document and initialize the narrow state.
+// Enhance the menu when its controls exist.
+if (button && list) {
+    // Show the button in its collapsed state.
+    document.documentElement.classList.add("nav-enhanced");
+    button.hidden = false;
+    button.setAttribute("aria-expanded", "false");
 
-// TODO 2: write one named function that keeps aria-expanded and visible state synchronized.
+    // Update the state CSS uses for visibility.
+    function setMenuOpen(isOpen) {
+        button.setAttribute("aria-expanded", String(isOpen));
+    }
 
-// TODO 3: use the native button's click event to toggle the state.
+    // Toggle the menu on click.
+    button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+        setMenuOpen(!isOpen);
+    });
 
-// TODO 4: close on Escape when open, then return focus to the button.
+    // Close the menu on Escape when open, then return focus to the button.
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") {
+            setMenuOpen(false);
+            button.focus();
+        }
+    });
+}
 
-// Add a comment above every logical step explaining what it does and why it is needed.
+
